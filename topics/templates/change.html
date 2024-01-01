@@ -1,0 +1,18 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>更改密碼</title>
+</head>
+   <body>
+      <h1>密碼難記吼</h1>
+      <form action = "change" method = "post" novalidate>
+         {% csrf_token %}
+         <p><input type = "password" name = "origin" placeholder = "輸入原密碼" value=""/> <span>{{ form.origin.errors.0 }}</span></p>
+         <p><input type = "password" name = "newpw" placeholder = "輸入新密碼" value=""/> <span>{{ form.newpw.errors.0 }}</span> (密碼必須至少8個字元且含大小寫英文字母及數字)</p>
+         <p><input type = "password" name = "again" placeholder = "新密碼再一次" value=""/> <span>{{ form.again.errors.0 }}{{ clear_errors.0 }}</span></p>
+         <p><input type = "submit" value = "按我改密碼" /></p>
+         <p>(修改若成功將自動導向登入頁面~)</p>
+      </form>
+
+   </body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>健康飲食</title>
+</head>
+   <body>
+
+    <h3>
+    <a href = "home">首頁</a> > 健康飲食
+    </h3>
+    <br>
+    共計{{ data_total_num }}筆資料
+    <br>
+    <br>
+
+    {% for i in page %}
+
+    標題 : {{ i.name }}
+    <br>
+    時間 : {{ i.date }}
+    <br>
+    來源 : {{ i.resource }}
+    <br>
+    網址 : <a href = "{{ i.url }}">{{ i.url }}</a>
+    <br>
+    <br>
+
+
+    {% endfor %}
+
+    {% if page.has_previous %}
+    <a href = "{% url 'health' %}?page={{ page.previous_page_number }}">上一頁</a>
+    {% endif %}
+    {% if page.has_next %}
+    <a href = "{% url 'health' %}?page={{ page.next_page_number }}">下一頁</a>
+    {% endif %}
+
+   </body>
+</html>

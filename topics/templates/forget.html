@@ -1,0 +1,18 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>忘記密碼</title>
+</head>
+   <body>
+      <h1>忘記密碼吼</h1>
+      <form action = "forget" method = "post">
+         {% csrf_token %}
+         <p><input type = "text" name = "username" placeholder = "請輸入Email" value="{{ username }}"/> <span>{{ form.username.errors.0 }}</span></p>
+         <p><input type = "submit" value = "按我發送新密碼" /></p>
+         {{ message }}
+      </form>
+
+      <a href = "login">這裡登入唷</a>
+
+   </body>
+</html>
