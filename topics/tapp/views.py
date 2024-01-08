@@ -241,23 +241,23 @@ class TopicsViewSet(viewsets.ModelViewSet):
             return Topics.objects.get(self.queryset, pk = pk)
         except:
             return Response({
-                "error" : "您撥的電話號碼是空號請查明後再撥..."
+                "error" : "沒有這個ID的資料!"
                 }, status=status.HTTP_404_NOT_FOUND)
 
     def get(self, request, pk): # GET METHOD
-        dish = self.get_topic_by_pk(pk)
-        serializer = TopicsSerializer(dish)
+        topic = self.get_topic_by_pk(pk)
+        serializer = TopicsSerializer(topic)
         return Response(serializer.data)
 
     def put(self, request, pk): # PUT METHOD
-        dish = self.get_topic_by_pk(pk)
-        serializer = TopicsSerializer(dish, data = request.data)
+        topic = self.get_topic_by_pk(pk)
+        serializer = TopicsSerializer(topic, data = request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk): # DELETE METHOD
-        dish = self.get_topic_by_pk(pk)
-        dish.delete()
+        topic = self.get_topic_by_pk(pk)
+        topic.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
